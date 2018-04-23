@@ -1,6 +1,7 @@
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\ProjectExpenseControl.dll.config
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\ProjectExpenseControl.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\ProjectExpenseControl.pdb
+E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\Antlr3.Runtime.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\EntityFramework.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\EntityFramework.SqlServer.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -11,13 +12,17 @@ E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Helpers.dl
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Http.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Http.WebHost.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Mvc.dll
+E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Optimization.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Razor.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Webpages.Deployment.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Webpages.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Webpages.Razor.dll
+E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\WebGrease.dll
+E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\Antlr3.Runtime.pdb
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\EntityFramework.xml
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\EntityFramework.SqlServer.xml
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Optimization.xml
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Razor.xml
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Webpages.xml
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\System.Web.Webpages.Deployment.xml
@@ -38,8 +43,8 @@ E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Net.Http.Fo
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Web.Http.resources.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Web.Http.WebHost.resources.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csprojResolveAssemblyReference.cache
+E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.Migrations.initial_migration.resources
+E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.GenerateResource.Cache
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.CoreCompileInputs.cache
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.pdb
-E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.Migrations.initial_migration.resources
-E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.GenerateResource.Cache

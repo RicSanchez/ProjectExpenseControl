@@ -25,8 +25,8 @@ namespace ProjectExpenseControl.CustomAuthentication
             using (AuthenticationDB dbContext = new AuthenticationDB())
             {
                 var user = (from us in dbContext.Users
-                            where string.Compare(username, us.Username, StringComparison.OrdinalIgnoreCase) == 0
-                            && string.Compare(password, us.Password, StringComparison.OrdinalIgnoreCase) == 0
+                            where string.Compare(username, us.USR_DES_NAME, StringComparison.OrdinalIgnoreCase) == 0
+                            && string.Compare(password, us.USR_DES_PASSWORD, StringComparison.OrdinalIgnoreCase) == 0
                             && us.IsActive == true
                             select us).FirstOrDefault();
 
@@ -62,7 +62,7 @@ namespace ProjectExpenseControl.CustomAuthentication
             using (AuthenticationDB dbContext = new AuthenticationDB())
             {
                 var user = (from us in dbContext.Users
-                            where string.Compare(username, us.Username, StringComparison.OrdinalIgnoreCase) == 0
+                            where string.Compare(username, us.USR_DES_NAME, StringComparison.OrdinalIgnoreCase) == 0
                             select us).FirstOrDefault();
 
                 if (user == null)
@@ -80,8 +80,8 @@ namespace ProjectExpenseControl.CustomAuthentication
             using (AuthenticationDB dbContext = new DataAccess.AuthenticationDB())
             {
                 string username = (from u in dbContext.Users
-                                   where string.Compare(email, u.Email) == 0
-                                   select u.Username).FirstOrDefault();
+                                   where string.Compare(email, u.USR_DES_EMAIL) == 0
+                                   select u.USR_DES_NAME).FirstOrDefault();
 
                 return !string.IsNullOrEmpty(username) ? username : string.Empty;
             }

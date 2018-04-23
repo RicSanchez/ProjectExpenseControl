@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.Http;
+using System.Web.Optimization;
+using ProjectExpenseControl.App_Start;
 
 namespace ProjectExpenseControl
 {
@@ -19,7 +21,8 @@ namespace ProjectExpenseControl
             // Código que se ejecuta al iniciar la aplicación
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)

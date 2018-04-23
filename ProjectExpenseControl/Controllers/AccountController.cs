@@ -10,10 +10,11 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using ProjectExpenseControl.Services;
 
 namespace ProjectExpenseControl.Controllers
 {
-    [AllowAnonymous]
+    //[AllowAnonymous]
     public class AccountController : Controller
     {
         // GET: Account
@@ -48,7 +49,7 @@ namespace ProjectExpenseControl.Controllers
                             UserId = user.UserId,
                             FirstName = user.FirstName,
                             LastName = user.LastName,
-                            RoleName = user.Roles.Select(r => r.RoleName).ToList()
+                            RoleName = user.Roles.Select(r => r.TUSR_DES_TYPE).ToList()
                         };
 
                         string userData = JsonConvert.SerializeObject(userModel);
@@ -79,6 +80,10 @@ namespace ProjectExpenseControl.Controllers
         [HttpGet]
         public ActionResult Registration()
         {
+            AreaRepository _repo = new AreaRepository();
+            
+            ViewBag.ARE_DES_NAME = new SelectList(_repo.GetAll2(), "ARE_IDE_AREA", "ARE_DES_NAME", "ARE_IDE_AREA");
+            //ViewBag.ListadoAreas = _repo.GetAll2();
             return View();
         }
 
@@ -97,17 +102,22 @@ namespace ProjectExpenseControl.Controllers
                     ModelState.AddModelError("Warning Email", "Sorry: Email already Exists");
                     return View(registrationView);
                 }
-
+                User user = null;
                 //Save User Data   
                 using (AuthenticationDB dbContext = new AuthenticationDB())
                 {
-                    var user = new User()
+                    user = new User()
                     {
-                        Username = registrationView.Username,
-                        FirstName = registrationView.FirstName,
-                        LastName = registrationView.LastName,
-                        Email = registrationView.Email,
-                        Password = registrationView.Password,
+                        USR_DES_NAME = registrationView.Username,
+                        USR_DES_FIRST_NAME = registrationView.FirstName,
+                        USR_DES_LAST_NAME = registrationView.LastName,
+                        USR_DES_EMAIL = registrationView.Email,
+                        USR_IDE_AREA = registrationView.Area,
+                        USR_DES_POSITION = registrationView.Position,
+                        USR_DES_PHONE = registrationView.Phone,
+                        USR_DES_PASSWORD = registrationView.Password,
+                        USR_FH_CREATED = DateTime.Now,
+                        USR_LAST_LOGIN = DateTime.Now,
                         ActivationCode = Guid.NewGuid(),
                     };
 
@@ -116,7 +126,8 @@ namespace ProjectExpenseControl.Controllers
                 }
 
                 //Verification Email  
-                VerificationEmail(registrationView.Email, registrationView.ActivationCode.ToString());
+                //VerificationEmail(registrationView.Email, registrationView.ActivationCode.ToString());
+                VerificationEmail(registrationView.Email, user.ActivationCode.ToString());
                 messageRegistration = "Your account has been created successfully. ^_^";
                 statusRegistration = true;
             }
@@ -170,10 +181,10 @@ namespace ProjectExpenseControl.Controllers
             var url = string.Format("/Account/ActivationAccount/{0}", activationCode);
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, url);
 
-            var fromEmail = new MailAddress("mehdi.rami2012@gmail.com", "Activation Account - AKKA");
+            var fromEmail = new MailAddress("divadchl@gmail.com", "Activation Account - AKKA");
             var toEmail = new MailAddress(email);
 
-            var fromEmailPassword = "******************";
+            var fromEmailPassword = "PHAN7ER5";
             string subject = "Activation Account !";
 
             string body = "<br/> Please click on the following link in order to activate your account" + "<br/><a href='" + link + "'> Activation Account ! </a>";

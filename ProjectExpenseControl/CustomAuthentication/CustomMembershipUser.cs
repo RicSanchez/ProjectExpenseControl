@@ -18,11 +18,12 @@ namespace ProjectExpenseControl.CustomAuthentication
 
         #endregion
 
-        public CustomMembershipUser(User user) : base("CustomMembership", user.Username, user.UserId, user.Email, string.Empty, string.Empty, true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now)
+        public CustomMembershipUser(User user) 
+            : base("CustomMembership", user.USR_DES_NAME, user.USR_IDE_USER, user.USR_DES_EMAIL, string.Empty, string.Empty, true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now)
         {
-            UserId = user.UserId;
-            FirstName = user.FirstName;
-            LastName = user.LastName;
+            UserId = user.USR_IDE_USER;
+            FirstName = user.USR_DES_FIRST_NAME;
+            LastName = user.USR_DES_LAST_NAME;
             Roles = user.Roles;
         }
     }

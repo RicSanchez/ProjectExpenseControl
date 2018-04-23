@@ -9,7 +9,7 @@ namespace ProjectExpenseControl.Controllers
     public class ErrorController : Controller
     {
         // GET: Error
-        public ActionResult Index()
+        public ActionResult AccessDenied()
         {
             return View();
         }

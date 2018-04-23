@@ -1,4 +1,5 @@
 ﻿using ProjectExpenseControl.DataAccess;
+using ProjectExpenseControl.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -24,12 +25,14 @@ namespace ProjectExpenseControl.DataAccess
                 .Map(m =>
                 {
                     m.ToTable("UserRoles");
-                    m.MapLeftKey("UserId");
-                    m.MapRightKey("RoleId");
+                    m.MapLeftKey("USR_IDE_USER");
+                    m.MapRightKey("TUSR_IDE_RESOURCE");
                 });
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Area> Area { get; set; }
+
     }
 }

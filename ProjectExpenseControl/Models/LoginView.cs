@@ -45,6 +45,19 @@ namespace ProjectExpenseControl.Models
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Area required")]
+        [Display(Name = "Area")]
+        public string Area { get; set; }
+
+        [Required(ErrorMessage = "Position required")]
+        [Display(Name = "Position")]
+        public string Position { get; set; }
+
+        [Required(ErrorMessage = "Phone required")]
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
+
         [Required]
         public Guid ActivationCode { get; set; }
 

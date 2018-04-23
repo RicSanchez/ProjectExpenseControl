@@ -38,13 +38,13 @@ namespace ProjectExpenseControl.CustomAuthentication
             using (AuthenticationDB dbContext = new AuthenticationDB())
             {
                 var selectedUser = (from us in dbContext.Users.Include("Roles")
-                                    where string.Compare(us.Username, username, StringComparison.OrdinalIgnoreCase) == 0
+                                    where string.Compare(us.USR_DES_NAME, username, StringComparison.OrdinalIgnoreCase) == 0
                                     select us).FirstOrDefault();
 
 
                 if (selectedUser != null)
                 {
-                    userRoles = new[] { selectedUser.Roles.Select(r => r.RoleName).ToString() };
+                    userRoles = new[] { selectedUser.Roles.Select(r => r.TUSR_DES_TYPE).ToString() };
                 }
 
                 return userRoles.ToArray();

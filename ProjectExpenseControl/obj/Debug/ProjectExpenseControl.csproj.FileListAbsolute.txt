@@ -43,7 +43,6 @@ E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Net.Http.Fo
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Web.Http.resources.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Web.Http.WebHost.resources.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.CoreCompileInputs.cache
-E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.CopyComplete
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.pdb
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csprojResolveAssemblyReference.cache

@@ -480,7 +480,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jqwidgets\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jqwidgets\globalize.culture.cs-CZ.js" />
     <Content Include="Scripts\jqwidgets\globalize.culture.de-DE.js" />
     <Content Include="Scripts\jqwidgets\globalize.culture.en-CA.js" />
@@ -495,7 +495,6 @@
     <Content Include="Scripts\jqwidgets\globalize.culture.ru-RU.js" />
     <Content Include="Scripts\jqwidgets\globalize.culture.sa-IN.js" />
     <Content Include="Scripts\jqwidgets\globalize.js" />
-    <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\jqwidgets\jqx-all.js" />
     <Content Include="Scripts\jqwidgets\jqxangular.js" />
     <Content Include="Scripts\jqwidgets\jqxbargauge.js" />

@@ -42,9 +42,10 @@ E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Web.Mvc.res
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Net.Http.Formatting.resources.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Web.Http.resources.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Web.Http.WebHost.resources.dll
-E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csprojResolveAssemblyReference.cache
-E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.Migrations.initial_migration.resources
-E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.GenerateResource.Cache
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.CoreCompileInputs.cache
+E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.CopyComplete
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.pdb
+E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csprojResolveAssemblyReference.cache
+E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.Migrations.initial_migration.resources
+E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.GenerateResource.cache

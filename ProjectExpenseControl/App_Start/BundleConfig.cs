@@ -23,11 +23,13 @@ namespace ProjectExpenseControl.App_Start
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/bootstrap.js"
+                      //"~/Scripts/respond.js"
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqwidgets").Include(
                     "~/Scripts/jqwidgets/jqxcore.js",
+                    "~/Scripts/jqwidgets/jqxtabs.js",
                     "~/Scripts/jqwidgets/jqxdata.js",
                     "~/Scripts/jqwidgets/jqxgrid.js",
                     "~/Scripts/jqwidgets/jqxgrid.selection.js",

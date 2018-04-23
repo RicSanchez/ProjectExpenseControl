@@ -13,7 +13,7 @@ namespace ProjectExpenseControl.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201804200343032_initial_migration"; }
+            get { return "201804231401186_initial_migration"; }
         }
         
         string IMigrationMetadata.Source

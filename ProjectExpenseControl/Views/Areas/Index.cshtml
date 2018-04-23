@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ProjectExpenseControl.Models.Area>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ARE_DES_NAME)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ARE_DES_NAME)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ARE_IDE_AREA }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ARE_IDE_AREA }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ARE_IDE_AREA })
+            </td>
+        </tr>
+    }
+
+</table>
+<div id="grid"></div>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            // prepare the data
+            var source =
+                {
+                    dataType: "json",
+                    dataFields: [
+                        { name: 'ARE_IDE_AREA', type: 'string' },
+                        { name: 'ARE_DES_NAME', type: 'string' }
+                    ],
+                    id: 'ARE_IDE_AREA',
+                    url: '/Areas/GetAreas'
+                };
+            var dataAdapter = new $.jqx.dataAdapter(source);
+            // create Tree Grid
+            $("#grid").jqxGrid(
+                {
+                    width: 850,
+                    source: dataAdapter,
+                    theme: 'arctic',
+                    pageSize: 5,
+                    sortable: true,
+                    filtermode:'excel',
+                    filterable: true,
+                    pageable: true,
+                    columnsresize: true,
+                    autoshowfiltericon: false,
+                    columns: [
+                        { text: 'Clave del Área', dataField: 'ARE_IDE_AREA', width: 200 },
+                        { text: 'Denominación del Área', dataField: 'ARE_DES_NAME' }
+                    ]
+                });
+        });
+    </script>
+}
+

@@ -184,7 +184,7 @@ namespace ProjectExpenseControl.Controllers
             var fromEmail = new MailAddress("divadchl@gmail.com", "Activation Account - AKKA");
             var toEmail = new MailAddress(email);
 
-            var fromEmailPassword = "PHAN7ER5";
+            var fromEmailPassword = "******";
             string subject = "Activation Account !";
 
             string body = "<br/> Please click on the following link in order to activate your account" + "<br/><a href='" + link + "'> Activation Account ! </a>";

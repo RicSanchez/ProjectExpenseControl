@@ -36,8 +36,6 @@ namespace ProjectExpenseControl.DataAccess
         [Required]
         public DateTime USR_FH_CREATED { get; set; }
         public DateTime USR_LAST_LOGIN { get; set; }
-        public bool IsActive { get; set; }
-        public Guid ActivationCode { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
     }
 }

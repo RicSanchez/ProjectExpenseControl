@@ -27,7 +27,7 @@ namespace ProjectExpenseControl.CustomAuthentication
                 var user = (from us in dbContext.Users
                             where string.Compare(username, us.USR_DES_NAME, StringComparison.OrdinalIgnoreCase) == 0
                             && string.Compare(password, us.USR_DES_PASSWORD, StringComparison.OrdinalIgnoreCase) == 0
-                            && us.IsActive == true
+                            
                             select us).FirstOrDefault();
 
                 return (user != null) ? true : false;

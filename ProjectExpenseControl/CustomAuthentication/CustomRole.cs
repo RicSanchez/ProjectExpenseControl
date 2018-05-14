@@ -53,6 +53,11 @@ namespace ProjectExpenseControl.CustomAuthentication
 
         }
 
+        public override void CreateRole(string roleName)
+        {
+            throw new NotImplementedException();
+        }
+
 
 
         #region Overrides of Role Provider
@@ -75,10 +80,7 @@ namespace ProjectExpenseControl.CustomAuthentication
             throw new NotImplementedException();
         }
 
-        public override void CreateRole(string roleName)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public override bool DeleteRole(string roleName, bool throwOnPopulatedRole)
         {

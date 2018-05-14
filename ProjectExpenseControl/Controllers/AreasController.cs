@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ProjectExpenseControl.CustomAuthentication;
+using ProjectExpenseControl.DataAccess;
+using ProjectExpenseControl.Models;
+using ProjectExpenseControl.Services;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using ProjectExpenseControl.DataAccess;
-using ProjectExpenseControl.Models;
-using ProjectExpenseControl.Services;
 
 namespace ProjectExpenseControl.Controllers
 {
+    [CustomAuthorize(Roles = "Administrador, JefeArea")]
     public class AreasController : Controller
     {
         private AuthenticationDB db = new AuthenticationDB();

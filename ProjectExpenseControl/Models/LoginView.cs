@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ProjectExpenseControl.Models
 {
     public class LoginView
     {
         [Required]
-        [Display(Name = "User Name")]
+        [Display(Name = "USUARIO")]
         public string UserName { get; set; }
         [Required]
-        [Display(Name = "Password")]
+        [Display(Name = "CONTRASEÑA")]
         public string Password { get; set; }
-        [Display(Name = "Remember Me")]
+        [Display(Name = "RECORDARME")]
         public bool RememberMe { get; set; }
     }
 
@@ -29,47 +30,49 @@ namespace ProjectExpenseControl.Models
 
     public class RegistrationView
     {
-        [Required(ErrorMessage = "User Name required")]
-        [Display(Name = "User Name")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "NOMBRE")]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "First Name required")]
-        [Display(Name = "First Name")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "APELLIDO PATERNO")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Last Name required")]
-        [Display(Name = "Last Name")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "APELLIDO MATERNO")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Email required")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email")]
+        [Display(Name = "CORREO")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Area required")]
-        [Display(Name = "Area")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "ÁREA")]
         public string Area { get; set; }
 
-        [Required(ErrorMessage = "Position required")]
-        [Display(Name = "Position")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "PUESTO")]
         public string Position { get; set; }
 
-        [Required(ErrorMessage = "Phone required")]
-        [Display(Name = "Phone")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "TELÉFONO")]
         public string Phone { get; set; }
 
         [Required]
         public Guid ActivationCode { get; set; }
 
-        [Required(ErrorMessage = "Password required")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "CONTRASEÑA")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Confirm Password required")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "Error : Confirm password does not match with password")]
+        [Display(Name = "CONFIRMAR CONTRASEÑA")]
+        //[Compare("password", ErrorMessage = "Error : la contraseña no es igual.")]
         public string ConfirmPassword { get; set; }
+
+        public IEnumerable<Area> CmbList1 { get; set; }
     }
 }

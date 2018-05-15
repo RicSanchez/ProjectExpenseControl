@@ -14,12 +14,17 @@ using ProjectExpenseControl.Services;
 
 namespace ProjectExpenseControl.Controllers
 {
-    //[AllowAnonymous]
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         // GET: Account
         public ActionResult Index()
         {
+            CustomSerializeModel user = new CustomSerializeModel();
+            user = (CustomSerializeModel)Session["user"];
+            ViewBag.idUser = user.UserId;
+            ViewBag.nameUser = user.FirstName;
+            ViewBag.roleUser = user.RoleName[0];
             return View();
         }
 
@@ -44,14 +49,14 @@ namespace ProjectExpenseControl.Controllers
                     var user = (CustomMembershipUser)Membership.GetUser(loginView.UserName, false);
                     if (user != null)
                     {
-                        CustomSerializeModel userModel = new Models.CustomSerializeModel()
+                        CustomSerializeModel userModel = new CustomSerializeModel()
                         {
                             UserId = user.UserId,
                             FirstName = user.FirstName,
                             LastName = user.LastName,
                             RoleName = user.Roles.Select(r => r.TUSR_DES_TYPE).ToList()
                         };
-
+                        Session["user"] = userModel;
                         string userData = JsonConvert.SerializeObject(userModel);
                         FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket
                             (
@@ -73,7 +78,7 @@ namespace ProjectExpenseControl.Controllers
                     }
                 }
             }
-            ModelState.AddModelError("", "Something Wrong : Username or Password invalid ^_^ ");
+            ModelState.AddModelError("", "Algo salió mal: El Usuario y la Contraseña son inválidos.");
             return View(loginView);
         }
 
@@ -81,8 +86,13 @@ namespace ProjectExpenseControl.Controllers
         public ActionResult Registration()
         {
             AreaRepository _repo = new AreaRepository();
-            
-            ViewBag.ARE_DES_NAME = new SelectList(_repo.GetAll2(), "ARE_IDE_AREA", "ARE_DES_NAME", "ARE_IDE_AREA");
+            List<Area> lAreas = new List<Area>();
+            lAreas = _repo.GetAll().ToList();
+            ViewBag.listaAreas = lAreas;
+            //RegistrationView objLogon = new RegistrationView();
+            //objLogon.CmbList1 = _repo.GetAll3().ToList();
+
+            //ViewBag.ARE_DES_NAME = new SelectList(_repo.GetAll2(), "ARE_IDE_AREA", "ARE_DES_NAME", "ARE_IDE_AREA");
             //ViewBag.ListadoAreas = _repo.GetAll2();
             return View();
         }
@@ -92,7 +102,8 @@ namespace ProjectExpenseControl.Controllers
         {
             bool statusRegistration = false;
             string messageRegistration = string.Empty;
-
+            
+            
             if (ModelState.IsValid)
             {
                 // Email Verification  
@@ -118,7 +129,7 @@ namespace ProjectExpenseControl.Controllers
                         USR_DES_PASSWORD = registrationView.Password,
                         USR_FH_CREATED = DateTime.Now,
                         USR_LAST_LOGIN = DateTime.Now,
-                        ActivationCode = Guid.NewGuid(),
+                        //ActivationCode = Guid.NewGuid(),
                     };
 
                     dbContext.Users.Add(user);
@@ -127,13 +138,13 @@ namespace ProjectExpenseControl.Controllers
 
                 //Verification Email  
                 //VerificationEmail(registrationView.Email, registrationView.ActivationCode.ToString());
-                VerificationEmail(registrationView.Email, user.ActivationCode.ToString());
-                messageRegistration = "Your account has been created successfully. ^_^";
+                //VerificationEmail(registrationView.Email, user.ActivationCode.ToString());
+                messageRegistration = "Su cuenta ha sido creada satisfactoriamente.";
                 statusRegistration = true;
             }
             else
             {
-                messageRegistration = "Something Wrong!";
+                messageRegistration = "Algo salió mal!";
             }
             ViewBag.Message = messageRegistration;
             ViewBag.Status = statusRegistration;
@@ -141,29 +152,30 @@ namespace ProjectExpenseControl.Controllers
             return View(registrationView);
         }
 
-        [HttpGet]
-        public ActionResult ActivationAccount(string id)
-        {
-            bool statusAccount = false;
-            using (AuthenticationDB dbContext = new DataAccess.AuthenticationDB())
-            {
-                var userAccount = dbContext.Users.Where(u => u.ActivationCode.ToString().Equals(id)).FirstOrDefault();
+       
+        //[HttpGet]
+        //public ActionResult ActivationAccount(string id)
+        //{
+        //    bool statusAccount = false;
+        //    using (AuthenticationDB dbContext = new DataAccess.AuthenticationDB())
+        //    {
+        //        var userAccount = dbContext.Users.Where(u => u.ActivationCode.ToString().Equals(id)).FirstOrDefault();
 
-                if (userAccount != null)
-                {
-                    userAccount.IsActive = true;
-                    dbContext.SaveChanges();
-                    statusAccount = true;
-                }
-                else
-                {
-                    ViewBag.Message = "Something Wrong !!";
-                }
+        //        if (userAccount != null)
+        //        {
+        //            userAccount.IsActive = true;
+        //            dbContext.SaveChanges();
+        //            statusAccount = true;
+        //        }
+        //        else
+        //        {
+        //            ViewBag.Message = "Something Wrong !!";
+        //        }
 
-            }
-            ViewBag.Status = statusAccount;
-            return View();
-        }
+        //    }
+        //    ViewBag.Status = statusAccount;
+        //    return View();
+        //}
 
         public ActionResult LogOut()
         {

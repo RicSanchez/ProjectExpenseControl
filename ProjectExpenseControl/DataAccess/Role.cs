@@ -10,11 +10,15 @@ namespace ProjectExpenseControl.DataAccess
     {
         [Key]
         public int TUSR_IDE_RESOURCE { get; set; }
+
         [Required]
         [StringLength(70)]
+        [Display(Name = "DESCRIPCIÓN DEL PERFIL")]
         public string TUSR_DES_TYPE { get; set; }
+
         [Required]
         public DateTime TUSR_FH_CREATED { get; set; }
+
         public virtual ICollection<User> Users { get; set; }
     }
 }

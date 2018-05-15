@@ -1,0 +1,26 @@
+﻿@model ProjectExpenseControl.Models.Area
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Area</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ARE_DES_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARE_DES_NAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ARE_IDE_AREA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

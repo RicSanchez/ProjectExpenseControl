@@ -12,6 +12,7 @@ using ProjectExpenseControl.Services;
 
 namespace ProjectExpenseControl.Controllers
 {
+    [AllowAnonymous]
     public class InvoicesController : Controller
     {
         private InvoicesRepository db;

@@ -9,9 +9,9 @@ namespace ProjectExpenseControl.Models
     public class Invoice
     {
         [Key]
-        [Required]
-        [Display(Name = "CÓDIGO DE FACTURA")]
-        public string INV_ID_INVOICE { get; set; }
+        //'[Required]
+        //[Display(Name = "CÓDIGO DE FACTURA")]
+        public int INV_ID_INVOICE { get; set; }
 
         [Display(Name = "SERIE")]
         [StringLength(10)]

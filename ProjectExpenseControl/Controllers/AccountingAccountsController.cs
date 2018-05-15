@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using ProjectExpenseControl.DataAccess;
+﻿using ProjectExpenseControl.CustomAuthentication;
 using ProjectExpenseControl.Models;
 using ProjectExpenseControl.Services;
+using System;
+using System.Net;
+using System.Web.Mvc;
 
 namespace ProjectExpenseControl.Controllers
 {
-    //[Authorize]
+    [CustomAuthorize(Roles = "Administrador, JefeArea")]
     public class AccountingAccountsController : Controller
     {
         private AccountingAccountRepository _db;

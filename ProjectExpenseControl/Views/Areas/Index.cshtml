@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ProjectExpenseControl.Models.Area>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listado de Áreas";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Área", "Create")
 </p>
 <table class="table">
     <tr>
@@ -24,9 +24,9 @@
                 @Html.DisplayFor(modelItem => item.ARE_DES_NAME)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ARE_IDE_AREA }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ARE_IDE_AREA }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ARE_IDE_AREA })
+                @Html.ActionLink("Editar", "Edit", new { id = item.ARE_IDE_AREA }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.ARE_IDE_AREA }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.ARE_IDE_AREA })
             </td>
         </tr>
     }

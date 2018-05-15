@@ -7,7 +7,7 @@ using ProjectExpenseControl.CustomAuthentication;
 
 namespace ProjectExpenseControl.Controllers
 {
-    [CustomAuthorize(Roles = "User")]
+    [AllowAnonymous]
     public class UserController : Controller
     {
         // GET: User

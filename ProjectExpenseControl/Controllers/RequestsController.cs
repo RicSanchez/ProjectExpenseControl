@@ -12,6 +12,7 @@ using ProjectExpenseControl.Services;
 
 namespace ProjectExpenseControl.Controllers
 {
+    [AllowAnonymous]
     public class RequestsController : Controller
     {
         private RequestsRepository db;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ProjectExpenseControl.Models
 {
@@ -11,15 +12,16 @@ namespace ProjectExpenseControl.Models
         [Key]
         [Required]
         [StringLength(10)]
-        [Display(Name ="Código de Área")]
+        [Display(Name ="CÓDIGO DE ÁREA")]
         public string ARE_IDE_AREA { get; set; }
         [Required]
         [StringLength(60)]
-        [Display(Name ="Área")]
+        [Display(Name ="ÁREA")]
         public string ARE_DES_NAME { get; set; }
 
         [Required]
         [ScaffoldColumn(false)]
         public DateTime ARE_FH_CREATED { get; set; }
+
     }
 }

@@ -9,6 +9,7 @@ namespace ProjectExpenseControl.DataAccess
     public class Role
     {
         [Key]
+        [Display(Name = "IDE DEL PERFIL")]
         public int TUSR_IDE_RESOURCE { get; set; }
 
         [Required]
@@ -17,6 +18,8 @@ namespace ProjectExpenseControl.DataAccess
         public string TUSR_DES_TYPE { get; set; }
 
         [Required]
+        [Display(Name = "FECHA DE CREACIÓN")]
+        [ScaffoldColumn(false)]
         public DateTime TUSR_FH_CREATED { get; set; }
 
         public virtual ICollection<User> Users { get; set; }

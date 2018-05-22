@@ -1,19 +1,111 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectExpenseControl.CustomAuthentication;
+using ProjectExpenseControl.DataAccess;
+using ProjectExpenseControl.Services;
 
 namespace ProjectExpenseControl.Controllers
 {
-    [AllowAnonymous]
+    [CustomAuthorize(Roles = "Administrador")]
     public class UserController : Controller
     {
-        // GET: User
+        private UserRepository _db;
+        private AreaRepository _area;
+        public UserController()
+        {
+            _db = new UserRepository();
+            _area = new AreaRepository();
+        }
+        // GET: Users
         public ActionResult Index()
         {
-            return View();
+            var model = _db.GetAll();
+            return View(model);
         }
+        // GET: Users/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = _db.GetOne(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // GET: Users/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User User = _db.GetOne(id);
+            if (User == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.listaAreas = _area.GetAll();
+            return View(User);
+        }
+
+        // POST: Users/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_db.Update(user))
+                    return RedirectToAction("Index");
+            }
+            return View(user);
+        }
+
+        // GET: Users/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User User = _db.GetOne(id);
+            if (User == null)
+            {
+                return HttpNotFound();
+            }
+            return View(User);
+        }
+
+        // POST: Users/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int? id)
+        {
+            if (_db.Delete(id))
+                return RedirectToAction("Index");
+            else
+                return RedirectToAction("Delete/" + id);
+        }
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
+
     }
 }

@@ -6,12 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ProjectExpenseControl.CustomAuthentication;
 using ProjectExpenseControl.DataAccess;
 using ProjectExpenseControl.Models;
 using ProjectExpenseControl.Services;
 
 namespace ProjectExpenseControl.Controllers
 {
+    [CustomAuthorize(Roles = "Administrador, JefeArea")]
     public class BudgetsController : Controller
     {
         private BudgetRepository _db;

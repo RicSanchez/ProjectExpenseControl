@@ -14,20 +14,29 @@ using ProjectExpenseControl.Services;
 
 namespace ProjectExpenseControl.Controllers
 {
-    [AllowAnonymous]
+    
     public class AccountController : Controller
     {
+        private  AreaRepository _area = new AreaRepository();
+        private  RoleRepository _role = new RoleRepository();
+        private  UserRepository _user = new UserRepository();
+
         // GET: Account
         public ActionResult Index()
         {
             CustomSerializeModel user = new CustomSerializeModel();
             user = (CustomSerializeModel)Session["user"];
-            ViewBag.idUser = user.UserId;
-            ViewBag.nameUser = user.FirstName;
-            ViewBag.roleUser = user.RoleName[0];
-            return View();
+            if(user != null)
+            {
+                ViewBag.idUser = user.UserId;
+                ViewBag.nameUser = user.FirstName;
+                ViewBag.roleUser = user.RoleName[0];
+                return View();
+            }
+            return RedirectToAction("Login");
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Login(string ReturnUrl = "")
         {
@@ -44,9 +53,9 @@ namespace ProjectExpenseControl.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(loginView.UserName, loginView.Password))
+                if (Membership.ValidateUser(loginView.Email, loginView.Password))
                 {
-                    var user = (CustomMembershipUser)Membership.GetUser(loginView.UserName, false);
+                    var user = (CustomMembershipUser)Membership.GetUser(loginView.Email, false);
                     if (user != null)
                     {
                         CustomSerializeModel userModel = new CustomSerializeModel()
@@ -60,7 +69,7 @@ namespace ProjectExpenseControl.Controllers
                         string userData = JsonConvert.SerializeObject(userModel);
                         FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket
                             (
-                            1, loginView.UserName, DateTime.Now, DateTime.Now.AddMinutes(15), false, userData
+                            1, loginView.Email, DateTime.Now, DateTime.Now.AddMinutes(15), false, userData
                             );
 
                         string enTicket = FormsAuthentication.Encrypt(authTicket);
@@ -82,23 +91,19 @@ namespace ProjectExpenseControl.Controllers
             return View(loginView);
         }
 
+        [CustomAuthorize(Roles = "Administrador")]
         [HttpGet]
         public ActionResult Registration()
         {
-            AreaRepository _repo = new AreaRepository();
-            List<Area> lAreas = new List<Area>();
-            lAreas = _repo.GetAll().ToList();
+            List<Area> lAreas = _area.GetAll();            
             ViewBag.listaAreas = lAreas;
-            //RegistrationView objLogon = new RegistrationView();
-            //objLogon.CmbList1 = _repo.GetAll3().ToList();
 
-            //ViewBag.ARE_DES_NAME = new SelectList(_repo.GetAll2(), "ARE_IDE_AREA", "ARE_DES_NAME", "ARE_IDE_AREA");
-            //ViewBag.ListadoAreas = _repo.GetAll2();
             return View();
         }
 
+        [CustomAuthorize(Roles = "Administrador")]
         [HttpPost]
-        public ActionResult Registration(RegistrationView registrationView)
+        public ActionResult Registration(User User)
         {
             bool statusRegistration = false;
             string messageRegistration = string.Empty;
@@ -107,49 +112,43 @@ namespace ProjectExpenseControl.Controllers
             if (ModelState.IsValid)
             {
                 // Email Verification  
-                string userName = Membership.GetUserNameByEmail(registrationView.Email);
-                if (!string.IsNullOrEmpty(userName))
+                string email = Membership.GetUserNameByEmail(User.USR_DES_EMAIL);
+                if (!string.IsNullOrEmpty(email))
                 {
                     ModelState.AddModelError("Warning Email", "Sorry: Email already Exists");
-                    return View(registrationView);
+                    return View(User);
                 }
-                User user = null;
-                //Save User Data   
-                using (AuthenticationDB dbContext = new AuthenticationDB())
-                {
-                    user = new User()
-                    {
-                        USR_DES_NAME = registrationView.Username,
-                        USR_DES_FIRST_NAME = registrationView.FirstName,
-                        USR_DES_LAST_NAME = registrationView.LastName,
-                        USR_DES_EMAIL = registrationView.Email,
-                        USR_IDE_AREA = registrationView.Area,
-                        USR_DES_POSITION = registrationView.Position,
-                        USR_DES_PHONE = registrationView.Phone,
-                        USR_DES_PASSWORD = registrationView.Password,
-                        USR_FH_CREATED = DateTime.Now,
-                        USR_LAST_LOGIN = DateTime.Now,
-                        //ActivationCode = Guid.NewGuid(),
-                    };
 
-                    dbContext.Users.Add(user);
-                    dbContext.SaveChanges();
+                //Save User Data   
+                User.USR_FH_CREATED = DateTime.Now;
+                User.USR_FH_LAST_LOGIN = DateTime.Now;
+                if (_user.Create(User))
+                {
+                    messageRegistration = "Su cuenta ha sido creada satisfactoriamente.";
+                    statusRegistration = true;
+
+                    ViewBag.Message = messageRegistration;
+                    ViewBag.Status = statusRegistration;
+                    return View("Registration");
                 }
 
                 //Verification Email  
-                //VerificationEmail(registrationView.Email, registrationView.ActivationCode.ToString());
-                //VerificationEmail(registrationView.Email, user.ActivationCode.ToString());
-                messageRegistration = "Su cuenta ha sido creada satisfactoriamente.";
-                statusRegistration = true;
+                //VerificationEmail(User.Email, User.ActivationCode.ToString());
+                //VerificationEmail(User.Email, user.ActivationCode.ToString());             
             }
             else
             {
                 messageRegistration = "Algo salió mal!";
             }
+
+            List<Area> lAreas = _area.GetAll();
+            List<Role> lRoles = _role.GetAll();
             ViewBag.Message = messageRegistration;
             ViewBag.Status = statusRegistration;
+            ViewBag.listaAreas = lAreas;
+            ViewBag.listaRoles = lRoles;
 
-            return View(registrationView);
+            return View(User);
         }
 
        

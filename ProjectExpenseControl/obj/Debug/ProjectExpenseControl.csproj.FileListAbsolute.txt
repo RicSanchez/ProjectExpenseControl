@@ -42,12 +42,10 @@ C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\Pro
 C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Net.Http.Formatting.resources.dll
 C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Web.Http.resources.dll
 C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\bin\es\System.Web.Http.WebHost.resources.dll
-C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.Migrations.initial_migration.resources
 C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.GenerateResource.Cache
 C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.CoreCompileInputs.cache
 C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.dll
 C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.pdb
-C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csprojResolveAssemblyReference.cache
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\ProjectExpenseControl.dll.config
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\ProjectExpenseControl.dll
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\bin\ProjectExpenseControl.pdb
@@ -99,3 +97,7 @@ E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseC
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.pdb
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csprojAssemblyReference.cache
 E:\ASP NET\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csproj.CopyComplete
+C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.Migrations.initial.resources
+C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.Migrations.Store_Procedures.resources
+C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.ResourceSQL.resources
+C:\Users\Jerry-PC\Documents\Visual Studio 2017\Program\ProjectExpenseControl\ProjectExpenseControl\obj\Debug\ProjectExpenseControl.csprojResolveAssemblyReference.cache

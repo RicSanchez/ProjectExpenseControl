@@ -1,5 +1,6 @@
 ﻿using ProjectExpenseControl.CustomAuthentication;
 using ProjectExpenseControl.DataAccess;
+using ProjectExpenseControl.Services;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -11,12 +12,17 @@ namespace ProjectExpenseControl.Controllers
     [CustomAuthorize(Roles = "Administrador")]
     public class RolesController : Controller
     {
-        private AuthenticationDB db = new AuthenticationDB();
+        private RoleRepository _db;
+
+        public RolesController()
+        {
+            _db = new RoleRepository();
+        }
 
         // GET: Roles
         public ActionResult Index()
         {
-            return View(db.Roles.ToList());
+            return View(_db.GetAll());
         }
 
         // GET: Roles/Details/5
@@ -26,7 +32,7 @@ namespace ProjectExpenseControl.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Find(id);
+            Role role = _db.GetOne(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -50,9 +56,8 @@ namespace ProjectExpenseControl.Controllers
             if (ModelState.IsValid)
             {
                 role.TUSR_FH_CREATED = DateTime.Today;
-                db.Roles.Add(role);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if(_db.Create(role))
+                    return RedirectToAction("Index");
             }
 
             return View(role);
@@ -65,7 +70,7 @@ namespace ProjectExpenseControl.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Find(id);
+            Role role = _db.GetOne(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -82,9 +87,8 @@ namespace ProjectExpenseControl.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(role).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if(_db.Update(role))
+                    return RedirectToAction("Index");
             }
             return View(role);
         }
@@ -96,7 +100,7 @@ namespace ProjectExpenseControl.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Find(id);
+            Role role = _db.GetOne(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -109,19 +113,11 @@ namespace ProjectExpenseControl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Role role = db.Roles.Find(id);
-            db.Roles.Remove(role);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (_db.Delete(id))
+                return RedirectToAction("Index");
+            else
+                return RedirectToAction("Delete/" + id);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

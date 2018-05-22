@@ -460,6 +460,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Migrations\SQL\DROP_SP.sql" />
+    <Content Include="Migrations\SQL\Create_SP_InsertUserAddRoleDefault.sql" />
+    <Content Include="Migrations\SQL\Create_SP_DeleteUserRemoveRole.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\jqwidgets\images\colorpicker\Thumbs.db" />
@@ -624,6 +627,10 @@
     <Compile Include="Migrations\201805131348263_initial.Designer.cs">
       <DependentUpon>201805131348263_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805210445073_Store_Procedures.cs" />
+    <Compile Include="Migrations\201805210445073_Store_Procedures.Designer.cs">
+      <DependentUpon>201805210445073_Store_Procedures.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountingAccount.cs" />
     <Compile Include="Models\Area.cs" />
@@ -634,6 +641,11 @@
     <Compile Include="Models\StatusAprov.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceSQL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceSQL.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\AccountingAccountRepository.cs" />
     <Compile Include="Services\AreaRepository.cs" />
     <Compile Include="Services\BudgetRepository.cs" />
@@ -658,12 +670,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Registration.cshtml" />
     <Content Include="Views\Error\AccessDenied.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Areas\Create.cshtml" />
     <Content Include="Views\Areas\Index.cshtml" />
-    <Content Include="Views\Account\Create.cshtml" />
     <Content Include="Views\Invoices\Create.cshtml" />
     <Content Include="Views\Invoices\Delete.cshtml" />
     <Content Include="Views\Invoices\Details.cshtml" />
@@ -701,6 +710,13 @@
     <Content Include="Views\UserRoles\Details.cshtml" />
     <Content Include="Views\UserRoles\Edit.cshtml" />
     <Content Include="Views\UserRoles\Index.cshtml" />
+    <Content Include="Views\Account\Registration.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\Areas\Edit.cshtml" />
+    <Content Include="Views\Areas\Delete.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -714,6 +730,13 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805131348263_initial.resx">
       <DependentUpon>201805131348263_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805210445073_Store_Procedures.resx">
+      <DependentUpon>201805210445073_Store_Procedures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourceSQL.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceSQL.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

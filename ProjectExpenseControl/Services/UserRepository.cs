@@ -2,7 +2,9 @@
 using ProjectExpenseControl.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -18,22 +20,48 @@ namespace ProjectExpenseControl.Services
             }
         }
 
-        public void Create(User model)
+        public bool Create(User model)
         {
-            using (AuthenticationDB db = new AuthenticationDB())
+            if(model != null)
             {
-                db.Users.Add(model);
-                db.SaveChanges();
+                using (AuthenticationDB db = new AuthenticationDB())
+                {
+                    //db.Users.Add(model);
+                    //return (db.SaveChanges() > 0) ? true : false;
+                  
+
+                    var rows = db.Database.ExecuteSqlCommand(ResourceSQL.SP_InsertUserAddRoleDefault,
+                        new SqlParameter("@USR_IDE_AREA", model.USR_IDE_AREA),
+                        new SqlParameter("@USR_DES_POSITION", model.USR_DES_POSITION),
+                        new SqlParameter("@USR_DES_NAME", model.USR_DES_NAME),
+                        new SqlParameter("@USR_DES_FIRST_NAME", model.USR_DES_FIRST_NAME),
+                        new SqlParameter("@USR_DES_LAST_NAME", model.USR_DES_LAST_NAME),
+                        new SqlParameter("@USR_DES_PASSWORD", model.USR_DES_PASSWORD),
+                        new SqlParameter("@USR_DES_PHONE", model.USR_DES_PHONE),
+                        new SqlParameter("@USR_DES_EMAIL", model.USR_DES_EMAIL),
+                        new SqlParameter("@USR_FH_CREATED", model.USR_FH_CREATED)
+                    );
+                    
+
+                    return (rows > 0) ? true : false;
+                }
             }
+            return false;
         }
 
-        public User GetOne(string id)
+        public User GetOne(int? id)
         {
-            using (AuthenticationDB db = new AuthenticationDB())
+            if (id != null)
             {
-                User User = db.Users.Find(id);
-                return User;
+                using (AuthenticationDB db = new AuthenticationDB())
+                {
+                    User user = db.Users.Find(id);
+                    if (user != null)
+                        return user;
+                }
             }
+            return null;
+
         }
 
         public Boolean Update(User User)
@@ -42,26 +70,32 @@ namespace ProjectExpenseControl.Services
             {
                 using (AuthenticationDB db = new AuthenticationDB())
                 {
-                    db.Entry(User).State = EntityState.Modified;
-                    db.SaveChanges();
+                    db.Users.Attach(User);
+                    //TODO: Ver cuales son losque se tendran que modificar
+                    db.Entry(User).Property(ob => ob.USR_DES_EMAIL).IsModified = true;
+                    return (db.SaveChanges() > 0) ? true : false;
                 }
-                return true;
             }
             return false;
         }
 
-        public Boolean Delete(string id)
+        public Boolean Delete(int? id)
         {
-            User User = GetOne(id);
-            if (User != null)
+            if (id != null)
             {
-                using (AuthenticationDB db = new AuthenticationDB())
+                User User = GetOne(id);
+                if (User != null)
                 {
-                    db.Users.Remove(User);
-                    db.SaveChanges();
-                }
-                return true;
+                    using (AuthenticationDB db = new AuthenticationDB())
+                    {
+                        //db.Users.Attach(User);
+                        //db.Entry(User).State = System.Data.Entity.EntityState.Deleted;
+                        //return (db.SaveChanges() > 0) ? true : false; ;
+                        var rows = db.Database.ExecuteSqlCommand(ResourceSQL.SP_DeleteUserRemoveRole,new SqlParameter("@USR_IDE_USER", id));
 
+                        return (rows > 0) ? true : false;
+                    }
+                }
             }
             return false;
         }

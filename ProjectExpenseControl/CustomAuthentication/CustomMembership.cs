@@ -12,12 +12,12 @@ namespace ProjectExpenseControl.CustomAuthentication
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="username"></param>
+        /// <param name="email"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public override bool ValidateUser(string username, string password)
+        public override bool ValidateUser(string email, string password)
         {
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 return false;
             }
@@ -25,7 +25,7 @@ namespace ProjectExpenseControl.CustomAuthentication
             using (AuthenticationDB dbContext = new AuthenticationDB())
             {
                 var user = (from us in dbContext.Users
-                            where string.Compare(username, us.USR_DES_NAME, StringComparison.OrdinalIgnoreCase) == 0
+                            where string.Compare(email, us.USR_DES_EMAIL, StringComparison.OrdinalIgnoreCase) == 0
                             && string.Compare(password, us.USR_DES_PASSWORD, StringComparison.OrdinalIgnoreCase) == 0
                             
                             select us).FirstOrDefault();
@@ -54,15 +54,15 @@ namespace ProjectExpenseControl.CustomAuthentication
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="username"></param>
+        /// <param name="email"></param>
         /// <param name="userIsOnline"></param>
         /// <returns></returns>
-        public override MembershipUser GetUser(string username, bool userIsOnline)
+        public override MembershipUser GetUser(string email, bool userIsOnline)
         {
             using (AuthenticationDB dbContext = new AuthenticationDB())
             {
                 var user = (from us in dbContext.Users
-                            where string.Compare(username, us.USR_DES_NAME, StringComparison.OrdinalIgnoreCase) == 0
+                            where string.Compare(email, us.USR_DES_EMAIL, StringComparison.OrdinalIgnoreCase) == 0
                             select us).FirstOrDefault();
 
                 if (user == null)

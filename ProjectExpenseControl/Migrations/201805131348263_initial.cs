@@ -63,12 +63,11 @@ namespace ProjectExpenseControl.Migrations
                     {
                         REQ_IDE_REQUEST = c.Int(nullable: false, identity: true),
                         REQ_IDE_USER = c.Int(nullable: false),
-                        REQ_IDE_AREA = c.String(nullable: false, maxLength: 10),
                         REQ_DES_TYPE_GASTO = c.Boolean(nullable: false),
                         REQ_DES_CONCEPT = c.String(maxLength: 100),
                         REQ_DES_QUANTITY = c.Decimal(nullable: false, precision: 18, scale: 2),
                         REQ_DES_OBSERVATIONS = c.String(maxLength: 200),
-                        REQ_IDE_STATUS_APROV = c.Int(nullable: false),
+                        REQ_IDE_STATUS_APROV = c.Int(nullable: true),
                         REQ_FH_CREATED = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.REQ_IDE_REQUEST);

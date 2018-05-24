@@ -17,19 +17,10 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.USR_IDE_USER)
 
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.USR_IDE_AREA, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.USR_IDE_AREA, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.USR_IDE_AREA, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
     <div class="form-group">
         @Html.LabelFor(model => model.USR_IDE_AREA, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @*@Html.DropDownList("ARE_DES_NAME", "Seleccione el Área")*@
             @Html.DropDownList("USR_IDE_AREA", new SelectList(ViewBag.listaAreas, "ARE_IDE_AREA", "ARE_DES_NAME"), "--Seleccione un Área--", new { @class = "form-control" })
-            @*@Html.DropDownListFor(model=>model.Area,(IEnumerable<SelectListItem>)ViewBag.Areas, new { htmlAttribute = new { @class = "form-control" } })*@
             @Html.ValidationMessageFor(model => model.USR_IDE_AREA, "", new { @class = "text-danger" })
         </div>
     </div>

@@ -52,8 +52,10 @@ namespace ProjectExpenseControl.Services
                 using (AuthenticationDB db = new AuthenticationDB())
                 {
                     db.Requests.Attach(model);
-                    //TODO: Ver cuales son los que se tendrán que estar actualizando
-                    //db.Entry(model).Property(ob => ob.STA_DES_STATUS).IsModified = true;
+                    db.Entry(model).Property(ob => ob.REQ_DES_TYPE_GASTO).IsModified = true;
+                    db.Entry(model).Property(ob => ob.REQ_DES_CONCEPT).IsModified = true;
+                    db.Entry(model).Property(ob => ob.REQ_DES_QUANTITY).IsModified = true;
+                    db.Entry(model).Property(ob => ob.REQ_DES_OBSERVATIONS).IsModified = true;
                     return (db.SaveChanges() > 0) ? true : false;
                 }
             }

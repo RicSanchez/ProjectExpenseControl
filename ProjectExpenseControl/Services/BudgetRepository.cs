@@ -53,8 +53,10 @@ namespace ProjectExpenseControl.Services
                 using (AuthenticationDB db = new AuthenticationDB())
                 {
                     db.Budgets.Attach(model);
-                    //TODO: Ver cuales son los que se tendrán que estar actualizando
-                    //db.Entry(model).Property(ob => ob.STA_DES_STATUS).IsModified = true;
+                    db.Entry(model).Property(ob => ob.BUD_IDE_ACCOUNT).IsModified = true;
+                    db.Entry(model).Property(ob => ob.BUD_IDE_AREA).IsModified = true;
+                    db.Entry(model).Property(ob => ob.BUD_DES_QUANTITY).IsModified = true;
+                    db.Entry(model).Property(ob => ob.BUD_DES_PERIOD).IsModified = true;
                     return (db.SaveChanges() > 0) ? true : false;
                 }
             }

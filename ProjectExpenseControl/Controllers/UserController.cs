@@ -69,6 +69,7 @@ namespace ProjectExpenseControl.Controllers
                 if (_db.Update(user))
                     return RedirectToAction("Index");
             }
+            ViewBag.listaAreas = _area.GetAll();
             return View(user);
         }
 
@@ -96,6 +97,29 @@ namespace ProjectExpenseControl.Controllers
                 return RedirectToAction("Index");
             else
                 return RedirectToAction("Delete/" + id);
+        }
+
+        // GET: Users/UserRoles/5
+        public ActionResult UserRoles(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User User = _db.GetOne(id);
+            if (User == null)
+            {
+                return HttpNotFound();
+            }
+            return View(User);
+        }
+
+        // POST: Users/UserRoles/5
+        [HttpPost, ActionName("UserRoles")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ModifyUserRoles(int? id)
+        {
+            return RedirectToAction("UserRoles/" + id);
         }
 
         //protected override void Dispose(bool disposing)

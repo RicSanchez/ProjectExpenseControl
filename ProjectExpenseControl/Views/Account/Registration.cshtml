@@ -13,7 +13,7 @@
             <strong>Registro Exitoso!</strong> @ViewBag.Message
         </div>
         <div>
-            @Html.ActionLink("Ir a inicio", "Index")
+            @Html.ActionLink("Ir a inicio", "Index", "User")
         </div><br />
         <div>
             @Html.ActionLink("Registrar otro usuario", "Registration")
@@ -140,7 +140,7 @@ else
         </div>
     }
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to List", "Index", "User")
     </div>
 }
 

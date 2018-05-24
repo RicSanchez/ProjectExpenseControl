@@ -16,12 +16,12 @@ namespace ProjectExpenseControl.Models
 
         [Required]
         [Display(Name = "USUARIO")]
-        [HiddenInput]
+        [ScaffoldColumn(false)]
         public int BUD_IDE_USER { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [Display(Name = "CUENTA MAYOR")]
-        [StringLength(6, MinimumLength = 3, ErrorMessage = "El rango del campo {0} es entre {2} y {1}")]
+        [StringLength(6, MinimumLength = 1, ErrorMessage = "El rango del campo {0} es entre {2} y {1}")]
         public string BUD_IDE_ACCOUNT { get; set; }
 
         [Required]
@@ -41,6 +41,7 @@ namespace ProjectExpenseControl.Models
 
         [Required]
         [Display(Name = "FECHA DE CREACIÓN")]
+        [ScaffoldColumn(false)]
         public DateTime BUD_FH_CREATED { get; set; }
 
 

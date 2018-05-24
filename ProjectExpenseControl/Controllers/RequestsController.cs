@@ -13,7 +13,7 @@ using ProjectExpenseControl.Services;
 
 namespace ProjectExpenseControl.Controllers
 {
-    [CustomAuthorize(Roles = "Administrador, JefeArea")]
+    [CustomAuthorize(Roles = "Administrador, JefeArea, Usuario")]
     public class RequestsController : Controller
     {
         private RequestsRepository db;
@@ -58,9 +58,20 @@ namespace ProjectExpenseControl.Controllers
         {
             if (ModelState.IsValid)
             {
-                request.REQ_FH_CREATED = DateTime.Now;
-                if (db.Create(request))
-                    return RedirectToAction("Index");
+                var user = (CustomSerializeModel)Session["user"];
+
+                if (user != null)
+                {
+                    request.REQ_FH_CREATED = DateTime.Now;
+                    request.REQ_IDE_USER = user.UserId;
+                    request.REQ_IDE_STATUS_APROV = 0;
+                    if (db.Create(request))
+                        return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Logout", "Account");
+                }
             }
 
             return View(request);

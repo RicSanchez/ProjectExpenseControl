@@ -71,7 +71,13 @@ namespace ProjectExpenseControl.Services
                 using (AuthenticationDB db = new AuthenticationDB())
                 {
                     db.Users.Attach(User);
-                    //TODO: Ver cuales son losque se tendran que modificar
+                    db.Entry(User).Property(ob => ob.USR_IDE_AREA).IsModified = true;
+                    db.Entry(User).Property(ob => ob.USR_DES_POSITION).IsModified = true;
+                    db.Entry(User).Property(ob => ob.USR_DES_NAME).IsModified = true;
+                    db.Entry(User).Property(ob => ob.USR_DES_FIRST_NAME).IsModified = true;
+                    db.Entry(User).Property(ob => ob.USR_DES_LAST_NAME).IsModified = true;
+                    db.Entry(User).Property(ob => ob.USR_DES_PASSWORD).IsModified = true;
+                    db.Entry(User).Property(ob => ob.USR_DES_PHONE).IsModified = true;
                     db.Entry(User).Property(ob => ob.USR_DES_EMAIL).IsModified = true;
                     return (db.SaveChanges() > 0) ? true : false;
                 }
@@ -98,6 +104,11 @@ namespace ProjectExpenseControl.Services
                 }
             }
             return false;
+        }
+
+        public UserRole GetUserRoles()
+        {
+            return null;
         }
     }
 }

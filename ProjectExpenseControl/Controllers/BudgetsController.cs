@@ -17,9 +17,13 @@ namespace ProjectExpenseControl.Controllers
     public class BudgetsController : Controller
     {
         private BudgetRepository _db;
+        private AreaRepository _area;
+        private AccountingAccountRepository _accountingAccount;
         public BudgetsController()
         {
             _db = new BudgetRepository();
+            _area = new AreaRepository();
+            _accountingAccount = new AccountingAccountRepository();
         }
 
         // GET: Budgets
@@ -46,6 +50,8 @@ namespace ProjectExpenseControl.Controllers
         // GET: Budgets/Create
         public ActionResult Create()
         {
+            ViewBag.listaAreas = _area.GetAll();
+            ViewBag.listaCuentas = _accountingAccount.GetAll();
             return View();
         }
 
@@ -58,9 +64,19 @@ namespace ProjectExpenseControl.Controllers
         {
             if (ModelState.IsValid)
             {
-                budget.BUD_FH_CREATED = DateTime.Now;
-                if(_db.Create(budget))
-                    return RedirectToAction("Index");
+                var user = (CustomSerializeModel)Session["user"];
+
+                if(user != null)
+                {
+                    budget.BUD_FH_CREATED = DateTime.Now;
+                    budget.BUD_IDE_USER = user.UserId;
+                    if (_db.Create(budget))
+                        return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Logout","Account");
+                }
             }
 
             return View(budget);
@@ -78,6 +94,8 @@ namespace ProjectExpenseControl.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.listaAreas = _area.GetAll();
+            ViewBag.listaCuentas = _accountingAccount.GetAll();
             return View(budget);
         }
 
@@ -93,6 +111,8 @@ namespace ProjectExpenseControl.Controllers
                 if(_db.Update(budget))
                     return RedirectToAction("Index");
             }
+            ViewBag.listaAreas = _area.GetAll();
+            ViewBag.listaCuentas = _accountingAccount.GetAll();
             return View(budget);
         }
 

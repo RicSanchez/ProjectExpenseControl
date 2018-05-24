@@ -24,8 +24,8 @@ namespace ProjectExpenseControl.DataAccess
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Request> Requests { get; set; }
         public DbSet<StatusAprov> StatusAprovs { get; set; }
-        public DbSet<User> Users { get; set; }
-        
+        public DbSet<User> Users { get; set; }        
+        public DbSet<UserRole> UserRoles { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -41,6 +41,5 @@ namespace ProjectExpenseControl.DataAccess
                 });
         }
 
-        public System.Data.Entity.DbSet<ProjectExpenseControl.Models.UserRole> UserRoles { get; set; }
     }
 }

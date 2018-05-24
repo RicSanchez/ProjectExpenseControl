@@ -26,9 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.USR_DES_LAST_NAME)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.USR_DES_PASSWORD)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.USR_DES_PHONE)
         </th>
@@ -56,18 +54,15 @@
             @Html.DisplayFor(modelItem => item.USR_DES_LAST_NAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.USR_DES_PASSWORD)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.USR_DES_PHONE)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.USR_DES_EMAIL)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.USR_IDE_USER }) |
-            @Html.ActionLink("Details", "Details", new { id=item.USR_IDE_USER }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.USR_IDE_USER })
+            @Html.ActionLink("Edit", "Edit", new { id = item.USR_IDE_USER }) |
+            @Html.ActionLink("Details", "Details", new { id = item.USR_IDE_USER }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.USR_IDE_USER }) 
         </td>
     </tr>
 }

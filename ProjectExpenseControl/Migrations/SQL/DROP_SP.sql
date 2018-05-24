@@ -1,0 +1,2 @@
+ DROP PROCEDURE DBProgramExpenses.dbo.SP_InsertUserAddRoleDefault
+ DROP PROCEDURE DBProgramExpenses.dbo.SP_DeleteUserRemoveRole

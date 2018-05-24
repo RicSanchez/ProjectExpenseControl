@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace ProjectExpenseControl.Controllers
 {
-    [CustomAuthorize(Roles = "Administrador, JefeArea")]
+    [CustomAuthorize(Roles = "Administrador")]
     public class AccountingAccountsController : Controller
     {
         private AccountingAccountRepository _db;

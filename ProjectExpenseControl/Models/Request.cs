@@ -18,14 +18,7 @@ namespace ProjectExpenseControl.Models
         public int REQ_IDE_USER { get; set; }
 
         [Required]
-        [Display(Name = "ÁREA")]
-        [StringLength(10)]
-        //[NotMapped]//Se maneja en el servidor pero no en DB
-        //[HiddenInput(DisplayValue = false)]
-        public string REQ_IDE_AREA { get; set; }
-
-        [Required]
-        [Display(Name = "TIPO DE GASTO")]
+        [Display(Name = "VIATICO?")]
         public Boolean REQ_DES_TYPE_GASTO { get; set; }
 
         [Display(Name = "CONCEPTO")]

@@ -10,10 +10,12 @@ namespace ProjectExpenseControl.Models
     public class LoginView
     {
         [Required]
-        [Display(Name = "USUARIO")]
-        public string UserName { get; set; }
+        [Display(Name = "CORREO")]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
         [Required]
         [Display(Name = "CONTRASEÑA")]
+        //[DataType(DataType.Password)]
         public string Password { get; set; }
         [Display(Name = "RECORDARME")]
         public bool RememberMe { get; set; }

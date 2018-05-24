@@ -1,0 +1,94 @@
+﻿@model ProjectExpenseControl.DataAccess.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.USR_IDE_USER)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USR_IDE_AREA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USR_IDE_AREA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USR_DES_POSITION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USR_DES_POSITION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USR_DES_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USR_DES_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USR_DES_FIRST_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USR_DES_FIRST_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USR_DES_LAST_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USR_DES_LAST_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USR_DES_PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USR_DES_PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USR_DES_PHONE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USR_DES_PHONE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USR_DES_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USR_DES_EMAIL)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.USR_FH_CREATED)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.USR_FH_LAST_LOGIN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.USR_IDE_USER }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

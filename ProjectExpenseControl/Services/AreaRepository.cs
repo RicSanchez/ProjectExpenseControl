@@ -18,13 +18,64 @@ namespace ProjectExpenseControl.Services
             }
         }
                 
-        public void Create(Area model)
+        public bool Create(Area model)
         {
-            using(AuthenticationDB db = new AuthenticationDB())
+            if(model != null)
             {
-                db.Areas.Add(model);
-                db.SaveChanges();
+                using(AuthenticationDB db = new AuthenticationDB())
+                {
+                    db.Areas.Add(model);
+                    return (db.SaveChanges() > 0) ? true : false;
+                }
             }
+            return false;
+        }
+
+        public Area GetOne(string id)
+        {
+            if (id != null)
+            {
+                using (AuthenticationDB db = new AuthenticationDB())
+                {
+                    Area area = db.Areas.Find(id);
+                    if (area != null)
+                        return area;
+                }
+            }
+            return null;
+
+        }
+
+        public Boolean Update(Area area)
+        {
+            if (area != null)
+            {
+                using (AuthenticationDB db = new AuthenticationDB())
+                {
+                    db.Areas.Attach(area);
+                    db.Entry(area).Property(ob => ob.ARE_DES_NAME).IsModified = true;
+                    return (db.SaveChanges() > 0) ? true : false;
+                }
+            }
+            return false;
+        }
+
+        public Boolean Delete(string id)
+        {
+            if (id != null)
+            {
+                Area area = GetOne(id);
+                if (area != null)
+                {
+                    using (AuthenticationDB db = new AuthenticationDB())
+                    {
+                        db.Areas.Attach(area);
+                        db.Entry(area).State = System.Data.Entity.EntityState.Deleted;
+                        return (db.SaveChanges() > 0) ? true : false; ;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

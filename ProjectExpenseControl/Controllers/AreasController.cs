@@ -11,21 +11,21 @@ using System.Web.Mvc;
 
 namespace ProjectExpenseControl.Controllers
 {
-    [CustomAuthorize(Roles = "Administrador, JefeArea")]
+    [CustomAuthorize(Roles = "Administrador")]
     public class AreasController : Controller
     {
         private AuthenticationDB db = new AuthenticationDB();
-        private AreaRepository _repo;
+        private AreaRepository _db;
         public AreasController()
         {
-            _repo = new AreaRepository();
+            _db = new AreaRepository();
         }
 
 
         // GET: Areas
         public ActionResult Index()
         {
-            var model = _repo.GetAll();
+            var model = _db.GetAll();
             return View(model);
         }
 
@@ -36,7 +36,7 @@ namespace ProjectExpenseControl.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Area area = db.Areas.Find(id);
+            Area area = _db.GetOne(id);
             if (area == null)
             {
                 return HttpNotFound();
@@ -60,10 +60,10 @@ namespace ProjectExpenseControl.Controllers
             if (ModelState.IsValid)
             {
                 area.ARE_FH_CREATED = DateTime.Now;
-                _repo.Create(area);
-                return RedirectToAction("Index");
+                if(_db.Create(area))
+                    return RedirectToAction("Index");
             }
-
+            
             return View(area);
         }
 
@@ -74,7 +74,7 @@ namespace ProjectExpenseControl.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Area area = db.Areas.Find(id);
+            Area area = _db.GetOne(id);
             if (area == null)
             {
                 return HttpNotFound();
@@ -91,9 +91,8 @@ namespace ProjectExpenseControl.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(area).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if(_db.Update(area))
+                    return RedirectToAction("Index");
             }
             return View(area);
         }
@@ -105,7 +104,7 @@ namespace ProjectExpenseControl.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Area area = db.Areas.Find(id);
+            Area area = _db.GetOne(id);
             if (area == null)
             {
                 return HttpNotFound();
@@ -118,10 +117,11 @@ namespace ProjectExpenseControl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Area area = db.Areas.Find(id);
-            db.Areas.Remove(area);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+
+            if(_db.Delete(id))
+                return RedirectToAction("Index");
+            else
+                return RedirectToAction("Delete/" + id);
         }
 
         protected override void Dispose(bool disposing)

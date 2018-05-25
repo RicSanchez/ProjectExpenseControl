@@ -127,7 +127,7 @@ namespace ProjectExpenseControl {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [DBProgramExpenses].[dbo].[SP_InsertUserAddRoleDefault] @USR_IDE_AREA, @USR_DES_POSITION, @USR_DES_NAME, @USR_DES_FIRST_NAME, @USR_DES_LAST_NAME,    @USR_DES_PASSWORD, @USR_DES_PHONE,  @USR_DES_EMAIL,  @USR_FH_CREATED.
+        ///   Looks up a localized string similar to [dbo].[SP_InsertUserAddRoleDefault] @USR_IDE_AREA, @USR_DES_POSITION, @USR_DES_NAME, @USR_DES_FIRST_NAME, @USR_DES_LAST_NAME,    @USR_DES_PASSWORD, @USR_DES_PHONE,  @USR_DES_EMAIL,  @USR_FH_CREATED.
         /// </summary>
         internal static string SP_InsertUserAddRoleDefault {
             get {

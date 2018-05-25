@@ -2,7 +2,7 @@
 	Este store sirve para ingresar un usuario y proporcionarle el permiso por
 	defecto de Usuario
 	*/
-USE DBProgramExpenses
+USE DB_A39AAA_net
 if exists (select * from dbo.sysobjects where id = object_id('SP_InsertUserAddRoleDefault') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].SP_InsertUserAddRoleDefault
 GO

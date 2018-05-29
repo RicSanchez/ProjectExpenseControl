@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProjectExpenseControl.DataAccess.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Registration","Account")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.USR_IDE_AREA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USR_DES_POSITION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USR_DES_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USR_DES_FIRST_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USR_DES_LAST_NAME)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.USR_DES_PHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USR_DES_EMAIL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.USR_IDE_AREA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USR_DES_POSITION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USR_DES_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USR_DES_FIRST_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USR_DES_LAST_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USR_DES_PHONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USR_DES_EMAIL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.USR_IDE_USER }) |
+            @Html.ActionLink("Details", "Details", new { id = item.USR_IDE_USER }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.USR_IDE_USER }) 
+        </td>
+    </tr>
+}
+
+</table>
